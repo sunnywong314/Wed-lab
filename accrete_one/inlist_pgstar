@@ -1,0 +1,25 @@
+&pgstar
+  ! see star/defaults/pgstar.defaults
+
+  ! MESA uses PGPLOT for live plotting and gives the user a tremendous
+  ! amount of control of the presentation of the information.
+
+  pgstar_interval = 1
+
+  grid2_win_flag = .true.
+  grid2_win_width = 12
+  grid2_file_flag = .true.
+  grid2_file_width = 16
+
+  TRho_profile_xmax = 10.5d0
+  TRho_profile_xmin = 6d0
+  TRho_profile_ymin = 7.0d0
+  TRho_profile_ymax = 9.5d0
+  ! show_TRho_accretion_mesh_borders = .true.
+
+  mixing_win_flag = .true.
+
+  abundance_xaxis_name = 'logRho'
+  abundance_xmin = 9d0
+
+/ ! end of pgstar namelist

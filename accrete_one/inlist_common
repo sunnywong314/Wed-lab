@@ -1,0 +1,130 @@
+&star_job
+  ! see star/defaults/star_job.defaults
+
+  ! save a model at the end of the run
+    save_model_when_terminate = .false.
+    save_model_filename = ''
+
+  ! initial model
+    set_initial_age = .true.
+    initial_age = 0d0
+
+    set_initial_model_number = .true.
+    initial_model_number = 0
+
+  ! coulomb corrections
+
+    ion_coulomb_corrections = 'PCR2009'
+    electron_coulomb_corrections = 'Itoh2002'
+
+  ! display on-screen plots
+    pgstar_flag = .true.
+    disable_pgstar_during_relax_flag = .false.
+
+/ ! end of star_job namelist
+
+
+&eos
+  ! eos options
+  ! see eos/defaults/eos.defaults
+
+    use_OPAL_SCVH = .false.
+    use_FreeEOS = .false.
+    use_PC = .false.
+
+    mass_fraction_limit_for_Skye = 1d-10
+
+/ ! end of eos namelist
+
+
+&kap
+  ! kap options
+  ! see kap/defaults/kap.defaults
+  use_Type2_opacities = .true.
+  Zbase = 0.02
+
+/ ! end of kap namelist
+
+
+&controls
+  ! see star/defaults/controls.defaults
+
+  ! when to stop
+
+     log_max_temp_upper_limit = 9.1d0
+
+  ! wind
+
+  ! atmosphere
+
+  ! rotation
+
+  ! element diffusion
+
+  ! mlt
+
+     use_Ledoux_criterion = .true.
+     num_cells_for_smooth_brunt_B = 0
+     num_cells_for_smooth_gradL_composition_term = 0
+
+     mlt_option = 'none'
+
+     prune_bad_cz_min_Hp_height = 0.1d0
+     prune_bad_cz_min_log_eps_nuc = 99d0
+
+  ! mixing
+
+  ! timesteps
+
+     ! delta_lgT_cntr_limit = 1d-2
+     ! delta_lgRho_cntr_limit = 1d-2
+
+     time_delta_coeff = 2.0d0
+
+     ! we don't care about energy conservation, just the initial model
+     limit_for_rel_error_in_energy_conservation = 1d-2
+     hard_limit_for_rel_error_in_energy_conservation = 1d-1
+
+  ! mesh
+
+     ! min_q_for_k_below_const_q = 0.9d0
+     ! min_q_for_k_const_mass = 0.8d0
+     max_logT_for_k_below_const_q = 99d0
+     max_logT_for_k_const_mass = 99d0
+
+     mesh_delta_coeff = 2.5d0
+
+  ! solver
+     ! options for energy conservation (see MESA V, Section 3)
+     energy_eqn_option = 'eps_grav'
+     use_gold_tolerances = .true.
+     
+
+     !!! help convergence
+     max_resid_jump_limit = 1d20
+     max_corr_jump_limit = 1d20
+     scale_max_correction = 0.1d0
+
+     ! make_gradr_sticky_in_solver_iters = .true.
+     ! scale_max_correction_for_negative_surf_lum = .true.
+
+     !!! relax tolerances aggressively for speed (not for production!)
+     min_xa_hard_limit = -1d-4 ! originally -1d-5
+
+     convergence_ignore_equL_residuals = .true.
+
+     tol_correction_norm = 3d-4 ! originally 3d-5
+     tol_max_correction = 3d-2 ! originally 3d-3
+     ! ignore_too_large_correction = .true.
+     
+     ignore_species_in_max_correction = .true.
+
+     report_solver_progress = .true.
+
+  ! output
+
+     profile_interval = 100000
+
+  ! others
+
+/ ! end of controls namelist
