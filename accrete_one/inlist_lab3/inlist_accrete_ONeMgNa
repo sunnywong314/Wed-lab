@@ -9,7 +9,7 @@
   ! net
 
     change_initial_net = .true.
-    new_net_name = 'nets_lab3/ONeMg2Na.net'
+    new_net_name = 'nets_lab3/ONeMgNa.net'
 
   ! weak rates
 
@@ -60,7 +60,7 @@
 
   ! output
 
-    log_directory = 'LOGS_ONeMgNa25_1d-6'
+    log_directory = 'LOGS_ONeMgNa_1d-6'
     
 
 / ! end of controls namelist
